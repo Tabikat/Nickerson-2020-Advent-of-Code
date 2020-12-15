@@ -1,11 +1,10 @@
 import os
-import string
 file=open('Day6.txt').read()
 groups=file.split('\n\n')
 
 some_yes_answers=0
 all_yes_answers=0
-for i in range(0,len(groups)):
+for i in range(len(groups)):
     num_of_people_in_group=groups[i].count('\n')+1
     groups[i]=groups[i].replace('\n','')
     #determines all possible answers for the group
