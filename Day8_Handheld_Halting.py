@@ -50,20 +50,18 @@ def terminate_loop(start_code):
     return 'Infinite Loop'
 
 boot_code=file.split('\n')
-for i in range(0,len(boot_code)):
+for i in range(len(boot_code)):
     if boot_code[i][0:3]=='nop':
         boot_code[i]=boot_code[i].replace('nop','jmp')
-        print('Accumulator:',terminate_loop(boot_code))
-        if terminate_loop(boot_code)=='Infinite Loop':
+        loop=terminate_loop(boot_code)
+        if loop=='Infinite Loop':
             boot_code=file.split('\n')
-            continue
-    #    elif (type(terminate_loop(boot_code)))==int:
-    #        print('Accumulator:',terminate_loop(boot_code))
+        else:
+            print('Accumulator:',loop)
     if boot_code[i][0:3]=='jmp':
         boot_code[i]=boot_code[i].replace('jmp','nop')
-        print('Accumulator:',terminate_loop(boot_code))
-        if terminate_loop(boot_code)=='Infinite Loop':
+        loop=terminate_loop(boot_code)
+        if loop=='Infinite Loop':
             boot_code=file.split('\n')
-            continue
-    #    else:
-    #        print('Accumulator:',terminate_loop(boot_code))
+        else:
+            print('Accumulator:',loop)
