@@ -3,7 +3,7 @@ import re #regular expression
 file=open('Day4.txt').read()
 passports=file.split('\n\n')
 
-for i in range(0,len(passports)):
+for i in range(len(passports)):
     passports[i]=passports[i].replace('\n',' ')
 
 expected_fields=['byr','iyr','eyr','hgt','hcl','ecl','pid']
@@ -123,7 +123,7 @@ def passport_ID(value):
         return 0
 
 #makes fields into dictionaries for quick reference
-for i in range(0,len(valid_passports)):
+for i in range(len(valid_passports)):
     all_fields={}
     valid_passports[i]=valid_passports[i].split(' ')
     for j in valid_passports[i]:
