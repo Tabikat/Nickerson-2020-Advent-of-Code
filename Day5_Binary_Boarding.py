@@ -33,12 +33,12 @@ def upper_half(min,max):
     return (min+half,max)
 
 seatIDs=[]
-for i in range(0,len(boarding_passes)):
+for i in range(len(boarding_passes)):
     one_pass=list(boarding_passes[i]) #list of coordinates for one pass
     (min_row,max_row)=(0,rows)
     (min_col,max_col)=(0,columns)
     #determines the row of the seat
-    for j in range(0,FB):
+    for j in range(FB):
         if one_pass[j]=='F': #Front
             if max_row-min_row!=2:
                 (min_row,max_row)=lower_half(min_row,max_row)
