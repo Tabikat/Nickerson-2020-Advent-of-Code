@@ -2,12 +2,13 @@ import os
 file=open('Day2.txt').read()
 file=file.split('\n')
 
-for i in range(0,len(file)):
+#makes list of lists
+for i in range(len(file)):
     file[i]=file[i].split()
 
 sled=0 #tracks each valid sled password
 toboggan=0 #tracks each valid toboggan password
-for i in range(0,len(file)): #
+for i in range(len(file)): #
     #min and max is the numbers on either side of -
     min,max=file[i][0].split('-')
     min,max=int(min),int(max)
