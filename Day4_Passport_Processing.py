@@ -1,5 +1,5 @@
 import os
-import re #regular expression
+import re #regular expression https://docs.python.org/3/howto/regex.html#regex-howto
 file=open('Day4.txt').read()
 passports=file.split('\n\n')
 
@@ -29,10 +29,10 @@ print('Number of Passports with all fields:',len(valid_passports))
 
 #determines if the value in 'byr' is a number between the values 1920 and 2002
 def birth_year(value):
-    byr=re.compile('[0-9]+')
-    validate=byr.match(value)
+    byr=re.compile('[0-9]+') #compiles a list of values 0-9
+    validate=byr.match(value) #checks for matches at the beginning of the string
     if validate:
-        if int(validate.group()) in range(1920,2003):
+        if int(validate.group()) in range(1920,2003): #.group returns matched string
             return 1
         else:
             return 0
@@ -66,9 +66,9 @@ def expiration_year(value):
 #determines if the value in 'hgt' is between 150-193 cm or 59-76 in
 def height(value):
     hgt_num=re.compile('[0-9]+')
-    validate_num=hgt_num.match(value)
+    validate_num=hgt_num.match(value) #checks for matches at the beginning of the string
     hgt_unit=re.compile('[cmin]+')
-    validate_unit=hgt_unit.search(value)
+    validate_unit=hgt_unit.search(value) #checks for matches in the whole string
     if validate_unit:
         if validate_unit.group()=='cm':
             if int(validate_num.group()) in range(150,194):
@@ -85,12 +85,12 @@ def height(value):
 
 #determines if the value in 'hcl' is of the form #xxxxxx where x is 0-9 or a-f
 def hair_color(value):
-    hcl_octo=re.compile('\#')
+    hcl_octo=re.compile('#')
     validate_octo=hcl_octo.match(value)
-    hcl=re.compile('[a-f0-9]+')
+    hcl=re.compile('[a-f0-9]+') #string.hexdigits
     validate_hcl=hcl.search(value)
     if validate_octo:
-        if validate_hcl.end()-validate_hcl.start()==6:
+        if validate_hcl.end()-validate_hcl.start()==6: #subtracts the positions of the match
             return 1
         else:
             return 0
@@ -127,9 +127,7 @@ for i in range(len(valid_passports)):
     all_fields={}
     valid_passports[i]=valid_passports[i].split(' ')
     for j in valid_passports[i]:
-        field={}
-        field[j[0:3]]=j[4:]
-        all_fields.update(field)
+        all_fields[j[0:3]]=j[4:]
     valid_passports[i]=all_fields
 
 #determines if the passports with all field contain valid data
