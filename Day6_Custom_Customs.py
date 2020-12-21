@@ -19,7 +19,6 @@ for i in range(len(groups)):
         if groups[i].count(k)!=num_of_people_in_group:
             nonanswers.append(k)
     all_yes_answers+=(len(answers)-len(nonanswers))
-
-
+print(groups)
 print('Sum of Yes Answers:', some_yes_answers)
 print('Sum of All-Yes Answers:', all_yes_answers)
